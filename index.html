@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SLUG-MECHA MULTIPLAYER</title>
+  </head>
+  <body>
+    <div class="arcade-cabinet">
+      <div id="app">
+        <!-- Pixel Art HUD Overlay -->
+        <div id="hud-overlay" class="hud-overlay">
+          <!-- Top HUD Header -->
+          <div class="hud-top-bar">
+            <!-- HP Section (Segmented Armor Bar) -->
+            <div class="hud-hp-section">
+              <div class="hud-avatar">🤖</div>
+              <div class="hud-hp-container">
+                <div class="hud-label">ARMOR STABILITY</div>
+                <div class="hud-hp-bar-bg">
+                  <div id="hud-hp-bar" class="hud-hp-bar" style="width: 100%;">
+                    <!-- Segments will be drawn via repeating background in CSS -->
+                  </div>
+                </div>
+                <div class="hud-hp-text"><span id="hud-hp-current">3</span>/3 UNITS</div>
+              </div>
+            </div>
+
+            <!-- Title & Online Indicator -->
+            <div class="hud-center-section">
+              <div class="hud-title">SLUG-MECHA</div>
+              <div class="hud-online-status">
+                <span class="pulsing-green-dot"></span>
+                <span id="hud-online-players">ONLINE: 1</span>
+              </div>
+            </div>
+
+            <!-- Ammo & Weapon Section -->
+            <div class="hud-ammo-section">
+              <div class="hud-ammo-container">
+                <div id="hud-weapon-name" class="hud-label">NO WEAPON</div>
+                <div class="hud-ammo-slots" id="hud-ammo-slots">
+                  <div class="ammo-slot"></div>
+                  <div class="ammo-slot"></div>
+                  <div class="ammo-slot"></div>
+                  <div class="ammo-slot"></div>
+                  <div class="ammo-slot"></div>
+                  <div class="ammo-slot"></div>
+                  <div class="ammo-slot"></div>
+                </div>
+                <div id="hud-ammo-text" class="hud-ammo-text">SEARCH FIELD</div>
+              </div>
+              <div class="hud-weapon-icon" id="hud-weapon-icon">❌</div>
+            </div>
+          </div>
+
+          <!-- Active Lobby Squad list -->
+          <div class="squad-panel" id="squad-panel">
+            <div class="squad-header">ACTIVE MECHAS</div>
+            <div class="squad-list" id="squad-list">
+              <!-- Player entries generated programmatically -->
+            </div>
+          </div>
+
+          <!-- Glitch Critical Failure Death Screen -->
+          <div id="death-overlay" class="death-overlay">
+            <div class="death-glitch-container">
+              <div class="death-title">CRITICAL ERROR</div>
+              <div class="death-subtitle">CORE VENTED</div>
+              <div class="death-respawn">REBOOTING SYSTEM: <span id="respawn-timer">2</span>s</div>
+            </div>
+          </div>
+
+          <!-- Sliding Retro Controls Panel -->
+          <div class="controls-drawer" id="controls-drawer">
+            <button class="controls-toggle" id="controls-toggle">SYSTEM DATA</button>
+            <div class="controls-content">
+              <div class="controls-header">OPERATION SYSTEM</div>
+              <div class="control-row">
+                <span class="key">A</span>
+                <span class="key">D</span>
+                <span class="desc">MOVE LEFT/RIGHT</span>
+              </div>
+              <div class="control-row">
+                <span class="key">W</span>
+                <span class="desc">JUMP (HOLD = HIGH)</span>
+              </div>
+              <div class="control-row">
+                <span class="key">S</span>
+                <span class="desc">CROUCH / SPRINGBOARD</span>
+              </div>
+              <div class="control-row">
+                <span class="key">SHIFT</span>
+                <span class="desc">DASH THRUST</span>
+              </div>
+              <div class="control-row">
+                <span class="key">L-CLICK</span>
+                <span class="desc">FIRE MECHA WEAPON</span>
+              </div>
+              <div class="control-row">
+                <span class="key">EMPTY CLICK</span>
+                <span class="desc">THROW EMPTY GUN</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
