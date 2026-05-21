@@ -3,9 +3,14 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import cors from 'cors';
 import { AddressInfo } from 'net';
+import path from 'path';
 
 const app = express();
 app.use(cors());
+
+// Servir los archivos estáticos del cliente compilado (Phaser + Vite)
+app.use(express.static(path.join(process.cwd(), 'dist')));
+
 const httpServer = createServer(app);
 const io = new Server(httpServer, { cors: { origin: "*" } });
 const port = Number(process.env.PORT ?? 3000);
