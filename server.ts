@@ -11,6 +11,15 @@ app.use(cors());
 // Servir los archivos estáticos del cliente compilado (Phaser + Vite)
 app.use(express.static(path.join(process.cwd(), 'dist')));
 
+// Ruta comodín para asegurar que index.html se sirva en cualquier GET del cliente
+app.get('*', (req, res, next) => {
+    // Si la petición es para Socket.io, dejamos que pase
+    if (req.path.startsWith('/socket.io')) {
+        return next();
+    }
+    res.sendFile(path.join(process.cwd(), 'dist', 'index.html'));
+});
+
 const httpServer = createServer(app);
 const io = new Server(httpServer, { cors: { origin: "*" } });
 const port = Number(process.env.PORT ?? 3000);
