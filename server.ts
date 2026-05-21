@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.static(path.join(process.cwd(), 'dist')));
 
 // Ruta comodín para asegurar que index.html se sirva en cualquier GET del cliente
-app.get('*', (req, res, next) => {
+app.get('(.*)', (req, res, next) => {
     // Si la petición es para Socket.io, dejamos que pase
     if (req.path.startsWith('/socket.io')) {
         return next();
